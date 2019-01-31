@@ -1,0 +1,175 @@
+.map {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+.floor_popup {
+    box-sizing: border-box;
+    background: rgb(255, 255, 255);
+    display: none;
+    position: absolute;
+    width: auto;
+    height: auto;
+}
+
+#floor_modal {
+    box-sizing: border-box;
+    background: rgb(255, 255, 255);
+}
+
+.floor_modal_image {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.background_layer {
+    box-sizing: border-box;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    z-index: 1000;
+    background: rgb(0, 0, 0);
+    opacity: .6;
+    display: none;
+}
+
+.floor_modal_close {
+    box-sizing: border-box;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    z-index: 10000;
+    display: none;
+}
+
+.floor_modal_close::before,
+.floor_modal_close::after {
+    box-sizing: border-box;
+    position: absolute;
+    content: '';
+    width: 30px;
+    height: 2px;
+    background: rgb(0, 0, 0);
+    top: 15px;
+}
+
+.floor_modal_close::before {
+    transform: rotate(45deg);
+}
+
+.floor_modal_close::after {
+    transform: rotate(-45deg);
+}
+
+.floor_data {
+    box-sizing: border-box;
+    font-size: 30px;
+    padding: 10px;
+}
+
+@-webkit-keyframes zoomInFoor {
+    from {
+        opacity: 0;
+        width: 0px;
+        height: 0px;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+        opacity: 1;
+        z-index: 10000;
+        position: fixed;
+        top: 5%;
+    }
+}
+
+@keyframes zoomInFoor {
+    from {
+        opacity: 0;
+        width: 0px;
+        height: 0px;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+        opacity: 1;
+        z-index: 10000;
+        position: fixed;
+        top: 5%;
+    }
+}
+
+.zoom_in_floor {
+    -webkit-animation-name: zoomInFoor;
+    animation-name: zoomInFoor;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+    background: rgb(255, 255, 255);
+}
+
+@-webkit-keyframes zoomOutFloor {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+        opacity: 1;
+        z-index: 10000;
+        position: fixed;
+        top: 5%;
+    }
+
+    50% {
+        opacity: .7;
+    }
+
+    to {
+        opacity: 0;
+        width: 0px;
+        height: 0px;
+    }
+}
+
+@keyframes zoomOutFloor {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+        opacity: 1;
+        z-index: 10000;
+        position: fixed;
+        top: 5%;
+    }
+
+    50% {
+        opacity: .7;
+    }
+
+    to {
+        opacity: 0;
+        width: 0px;
+        height: 0px;
+    }
+}
+
+.zoom_out_floor {
+    -webkit-animation-name: zoomOutFloor;
+    animation-name: zoomOutFloor;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+}

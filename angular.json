@@ -23,11 +23,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "./src/assets/css/mapify.css"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.js",
-              "./src/assets/js/maphilight.js"
+              "./src/assets/js/maphilight.js",
+              "./src/assets/js/image-map.js",
+              "./src/assets/js/responsive-image.js",
+              "./src/assets/js/mapify.js"
             ]
           },
           "configurations": {
