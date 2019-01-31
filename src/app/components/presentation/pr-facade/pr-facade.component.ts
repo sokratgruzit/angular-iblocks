@@ -14,13 +14,13 @@ export class PrFacadeComponent implements OnInit {
 
   getFloors() {
     this.layoutFloorService.getAllFloorsData()
-    .subscribe((data) => {
-      this.floorsList = data;
-    });
+      .subscribe((data) => {
+        this.floorsList = data;
+      });
   }
 
   ngOnInit() {
-    $(function() {
+    $(function () {
       $('.map').maphilight();
       $('img[usemap]').rwdImageMaps();
       // $('img[usemap]').mapify();
@@ -46,8 +46,8 @@ export class PrFacadeComponent implements OnInit {
     );
 
     $('.floor_popup')
-    .attr('style', 'left:' + posX + 'px;top:' + posY + 'px;')
-    .show();
+      .attr('style', 'left:' + posX + 'px;top:' + posY + 'px;')
+      .show();
   }
 
   floorDetailsHide() {
@@ -60,12 +60,13 @@ export class PrFacadeComponent implements OnInit {
     const posY = e.clientY;
 
     const img = $('.floor_modal_image').attr('src', '../../../../assets/img/1_floor.png');
-    $('<img>').attr('src', $(img).attr('src')).on('load', function() {
+    $('<img>').attr('src', $(img).attr('src')).on('load', function () {
       $('#floor_modal')
-      .css({'width': this.width,
-        'height': this.height,
-        'left': 'calc(50% - ' + this.width / 2 + 'px)'
-      });
+        .css({
+          'width': this.width,
+          'height': this.height,
+          'left': 'calc(50% - ' + this.width / 2 + 'px)'
+        });
     });
 
     $('#floor_modal').toggleClass('zoom_in_floor zoom_out_floor');
@@ -78,5 +79,10 @@ export class PrFacadeComponent implements OnInit {
     $('.floor_modal_close').attr('style', '');
     $('.background_layer').fadeOut(350);
   }
+
+  resizeReloader() {
+    window.location.reload();
+  }
+
 
 }
