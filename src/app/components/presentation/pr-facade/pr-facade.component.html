@@ -1,4 +1,4 @@
-<!-- <div id="map" class="map" tabindex="0"></div> -->
+<app-top-menu></app-top-menu>
 <img class="map" src="../../../../assets/img/facade.jpg" usemap="#facade" (window:resize)="resizeReloader()">
 <map name="facade">
   <area *ngFor="let floor of floorsList" (click)="openModal($event)" (mouseleave)="floorDetailsHide()" (mouseenter)="floorDetails($event, floor)"

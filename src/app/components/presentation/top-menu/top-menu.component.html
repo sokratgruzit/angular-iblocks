@@ -1,0 +1,17 @@
+<div class="top_menu_burger" (click)="showTopMenu()">
+  <div class="burger_lines"></div>
+</div>
+<div id="top_menu" class="slide_out_down">
+  <div class="top_menu_home">
+    <a href="/">Home</a>
+  </div>
+  <select class="top_menu_items">
+    <option *ngFor="let building of buildingData" [attr.id]="building.id" class="top_menu_item">
+      <span class="building_name">{{ building.buildingName }}</span>
+      <span class="building_type">{{ building.type }}</span>
+      <span class="building_city">{{ building.city }}</span>
+      <span class="building_finishing">{{ building.constructionEnd }}</span>
+    </option>
+  </select>
+  <div class="close_catalog" (click)="hideTopMenu()"></div>
+</div>
