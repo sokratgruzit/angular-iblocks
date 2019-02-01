@@ -1,0 +1,30 @@
+export interface BuildingModel {
+    id: number;
+    complexId: number;
+    buildingName: string;
+    type: string;
+    country: string;
+    city: string;
+    street: string;
+    houseNumber: number;
+    zipCode: number;
+    disctrict: string;
+    developerName: string;
+    bank: string;
+    interior: string;
+    exterior: string;
+    stage: string;
+    constructionStart: Date;
+    constructionEnd: Date;
+    currency: string;
+    salesOffice: string;
+    salesStart: Date;
+    salesEnd: Date;
+    site: string;
+    headline: string;
+    description: string;
+    dataStatus: number;
+    createdAt: Date;
+    updatedAt: Date;
+    createdBy: number;
+}

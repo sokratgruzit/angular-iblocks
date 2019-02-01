@@ -10,11 +10,13 @@ import { PrFlatGridComponent } from './components/presentation/pr-flat-grid/pr-f
 import { PrFloorsComponent } from './components/presentation/pr-floors/pr-floors.component';
 import { PrFloorViewComponent } from './components/presentation/pr-floor-view/pr-floor-view.component';
 import { PrPlanningsComponent } from './components/presentation/pr-plannings/pr-plannings.component';
+import { TopMenuComponent } from './components/presentation/top-menu/top-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PrFacadeComponent
+    PrFacadeComponent,
+    TopMenuComponent
   ],
   imports: [
     BrowserModule,

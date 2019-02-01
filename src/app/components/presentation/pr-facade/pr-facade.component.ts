@@ -9,24 +9,34 @@ declare var $: any;
 })
 export class PrFacadeComponent implements OnInit {
   floorsList = [];
+  flatsList = [];
 
   constructor(public layoutFloorService: LayoutFloorService) { }
 
   getFloors() {
     this.layoutFloorService.getAllFloorsData()
-      .subscribe((data) => {
-        this.floorsList = data;
-      });
+    .subscribe((data) => {
+      this.floorsList = data;
+    });
+  }
+
+  getFlats(buildingId, floorId) {
+    this.layoutFloorService.getAllFloorsData()
+    .subscribe((data) => {
+      this.flatsList = data[0].properties.flats;
+    });
   }
 
   ngOnInit() {
     $(function () {
+      $('.floor_modal_image').maphilight();
       $('.map').maphilight();
       $('img[usemap]').rwdImageMaps();
       // $('img[usemap]').mapify();
     });
 
     this.getFloors();
+    this.getFlats(1, 1);
   }
 
   floorDetails(e, floorData) {
@@ -38,10 +48,10 @@ export class PrFacadeComponent implements OnInit {
       floorData.id +
       '; ' +
       'Some data: ' +
-      floorData.properties.roomsInfo[0][1] +
+      floorData.properties.flats[0][1] +
       '; ' +
       'Status: ' +
-      floorData.properties.roomsInfo[0][2] +
+      floorData.properties.flats[0][3] +
       ';'
     );
 
@@ -55,19 +65,22 @@ export class PrFacadeComponent implements OnInit {
     $('.floor_data').empty();
   }
 
-  openModal(e) {
+  openModal(e, width, height) {
     const posX = e.clientX;
     const posY = e.clientY;
+    console.log(width, height);
 
-    const img = $('.floor_modal_image').attr('src', '../../../../assets/img/1_floor.png');
-    $('<img>').attr('src', $(img).attr('src')).on('load', function () {
-      $('#floor_modal')
-        .css({
-          'width': this.width,
-          'height': this.height,
-          'left': 'calc(50% - ' + this.width / 2 + 'px)'
-        });
-    });
+    $('.floor_modal_image').attr('src', '../../../../assets/img/1_floor.png');
+    $('.floor_modal_image')
+    .attr('style',
+    'width:' + width +
+    'px;height:' + height + 'px;');
+
+    $('#floor_modal')
+    .attr('style',
+      'width:' + width + 'px;height:' + height +
+      'px;left:calc(50% - ' + width / 2 + 'px);'
+    );
 
     $('#floor_modal').toggleClass('zoom_in_floor zoom_out_floor');
     $('.floor_modal_close').attr('style', 'display:block');

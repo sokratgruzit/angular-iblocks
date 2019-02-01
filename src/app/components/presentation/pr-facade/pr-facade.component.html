@@ -1,7 +1,7 @@
 <app-top-menu></app-top-menu>
 <img class="map" src="../../../../assets/img/facade.jpg" usemap="#facade" (window:resize)="resizeReloader()">
 <map name="facade">
-  <area *ngFor="let floor of floorsList" (click)="openModal($event)" (mouseleave)="floorDetailsHide()" (mouseenter)="floorDetails($event, floor)"
+  <area *ngFor="let floor of floorsList" (click)="openModal($event, floor.properties.imageWidth, floor.properties.imageHeight)" (mouseleave)="floorDetailsHide()" (mouseenter)="floorDetails($event, floor)"
     [attr.id]="floor.id" [attr.target]="" [attr.alt]="floor.properties.name" [attr.title]="floor.properties.name"
     [attr.href]="" [attr.shape]="floor.geometry.type" [attr.coords]="floor.geometry.coordinates">
 </map>
@@ -10,6 +10,9 @@
 </div>
 <div id="floor_modal" class="zoom_out_floor">
   <div class="floor_modal_close" (click)="closeModal($event)"></div>
-  <img class="floor_modal_image" alt="1 floor">
+  <img class="floor_modal_image" alt="1 floor" usemap="#floor">
+  <map name="floor">
+    <area *ngFor="let flat of flatsList" [attr.target]="" [attr.alt]=flat[1] [attr.title]=flat[1] href="#" [attr.coords]=flat[4] shape="poly">
+  </map>
 </div>
 <div class="background_layer"></div>

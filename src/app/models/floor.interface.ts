@@ -1,7 +1,6 @@
 // export type FloorModel = Array<{type: string; features: Features}>;
 
 export interface FloorModel {
-    type: string;
     geometry: Geometry;
     properties: Properties;
     id: string;
@@ -14,7 +13,16 @@ export interface Geometry {
 
 export interface Properties {
     name: string;
-    price: string;
     numOfApartaments: string;
-    roomsInfo: any;
+    complexId: string;
+    buildingId: string;
+    floorOrder: string;
+    constructionStatus: string;
+    layoutImgUrl: string;
+    imageWidth: string;
+    imageHeight: string;
+    updatedAt: string;
+    createdBy: string;
+    price: string;
+    flats: any;
 }
