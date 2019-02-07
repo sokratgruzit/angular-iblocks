@@ -24,11 +24,17 @@ export class TopMenuComponent implements OnInit {
   }
 
   showTopMenu() {
-    $('#top_menu').toggleClass('slide_in_down slide_out_down');
+    $('#top_menu')
+    .toggleClass('slide_in_down slide_out_down');
+
+    $('.top_menu_burger').fadeOut(200);
   }
 
   hideTopMenu() {
-    $('#top_menu').toggleClass('slide_in_down slide_out_down');
+    $('#top_menu')
+    .toggleClass('slide_in_down slide_out_down');
+
+    $('.top_menu_burger').fadeIn(200);
   }
 
 }

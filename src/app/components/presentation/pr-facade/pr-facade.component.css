@@ -9,8 +9,9 @@
     background: rgb(255, 255, 255);
     display: none;
     position: absolute;
-    width: auto;
+    width: 200px;
     height: auto;
+    border-radius: 6px;
 }
 
 #floor_modal {
@@ -69,8 +70,10 @@
 
 .floor_data {
     box-sizing: border-box;
-    font-size: 30px;
+    font-size: 18px;
     padding: 10px;
+    text-align: center;
+    display: block;
 }
 
 @-webkit-keyframes zoomInFloor {

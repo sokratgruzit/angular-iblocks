@@ -31,7 +31,8 @@
               "./src/assets/js/maphilight.js",
               "./src/assets/js/image-map.js",
               "./src/assets/js/responsive-image.js",
-              "./src/assets/js/mapify.js"
+              "./src/assets/js/mapify.js",
+              "./src/assets/js/tippy.js"
             ]
           },
           "configurations": {

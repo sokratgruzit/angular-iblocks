@@ -46,18 +46,33 @@
     left: 0;
     right: 0;
     background: rgb(255, 255, 255);
+    -webkit-box-shadow: 0px 25px 83px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 25px 83px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 25px 83px 0px rgba(0,0,0,0.75);
 }
 
 .top_menu_home {
     box-sizing: border-box;
     width: 150px;
     border-right: 1px solid rgb(0, 0, 0);
+    position: relative;
 }
 
 .top_menu_home a {
-    margin-top: 40px;
-    margin-left: 50px;
+    box-sizing: border-box;
+    position: absolute;
+    top: calc(50% - 14px);
+    left: calc(50% - 32.25px);
     display: block;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.top_menu_home a:hover {
+    color: rgb(255, 0, 0);
+    transition: .5s;
 }
 
 .top_menu_items {
@@ -69,7 +84,9 @@
     border-left: none;
     border-bottom: none;
     border-right: 1px solid rgb(0, 0, 0);
-    font-size: 30px;
+    font-size: 24px;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
 }
 
 .top_menu_item {
@@ -159,11 +176,17 @@
     from {
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
     }
   
     to {
         -webkit-transform: translate3d(0, -100%, 0);
         transform: translate3d(0, -100%, 0);
+        opacity: 0;
     }
 }
   
@@ -171,11 +194,17 @@
     from {
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
     }
   
     to {
         -webkit-transform: translate3d(0, -100%, 0);
         transform: translate3d(0, -100%, 0);
+        opacity: 0;
     }
 }
   
@@ -184,4 +213,125 @@
     animation-name: slideOutDown;
     animation-duration: .5s;
     animation-fill-mode: forwards;
+}
+
+@media screen and (min-width: 321px) and (max-width: 480px) {
+    #top_menu {
+        height: 50px;
+    }
+
+    .top_menu_home {
+        width: 60px;
+    }
+
+    .top_menu_home a {
+        top: calc(50% - 8px);
+        left: calc(50% - 17.5px);
+        font-size: 13px;
+    }
+
+    .top_menu_items {
+        width: 225px;
+        font-size: 13px;
+        padding-left: 10px;
+    }
+
+    .close_catalog {
+        width: 20px;
+        height: 20px;
+        top: calc(50% - 10px);
+        right: 10px;
+    }
+    
+    .close_catalog::before,
+    .close_catalog::after {
+        width: 13px;
+        height: 1px;
+        top: 8.5px;
+        left: 2px;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
+    #top_menu {
+        height: 50px;
+    }
+
+    .top_menu_home {
+        width: 60px;
+    }
+
+    .top_menu_home a {
+        top: calc(50% - 8px);
+        left: calc(50% - 17.5px);
+        font-size: 13px;
+    }
+
+    .top_menu_items {
+        width: 290px;
+        font-size: 13px;
+        padding-left: 10px;
+    }
+
+    .close_catalog {
+        width: 20px;
+        height: 20px;
+        top: calc(50% - 10px);
+    }
+    
+    .close_catalog::before,
+    .close_catalog::after {
+        width: 13px;
+        height: 1px;
+        top: 8.5px;
+        left: 2px;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 980px) {
+    #top_menu {
+        height: 50px;
+    }
+
+    .top_menu_home {
+        width: 100px;
+    }
+
+    .top_menu_home a {
+        top: calc(50% - 12px);
+        left: calc(50% - 27px);
+        font-size: 18px;
+    }
+
+    .top_menu_items {
+        width: 400px;
+        font-size: 18px;
+    }
+
+    .close_catalog {
+        width: 20px;
+        height: 20px;
+        top: calc(50% - 10px);
+    }
+    
+    .close_catalog::before,
+    .close_catalog::after {
+        width: 13px;
+        height: 1px;
+        top: 8.5px;
+        left: 2px;
+    }
+}
+
+@media screen and (min-width: 981px) and (max-width: 1200px) {
+    .top_menu_home a {
+        top: calc(50% - 12px);
+        left: calc(50% - 27px);
+        font-size: 20px;
+    }
+
+    .top_menu_items {
+        width: 550px;
+        font-size: 20px;
+    }
 }

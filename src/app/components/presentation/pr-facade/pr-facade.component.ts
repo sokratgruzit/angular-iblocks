@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LayoutFloorService } from '../../../services/layout-floor.service';
+import { tippy } from '../../../../assets/js/tippy.js';
 declare var $: any;
 
 @Component({
@@ -33,15 +34,35 @@ export class PrFacadeComponent implements OnInit {
       $('.map').maphilight();
       $('img[usemap]').rwdImageMaps();
       // $('img[usemap]').mapify();
+
+      // tippy.setDefaults({
+      //   arrow: true,
+      //   delay: 40,
+      //   theme: 'my-tippy',
+      // });
     });
 
     this.getFloors();
     this.getFlats(1, 1);
   }
 
-  floorDetails(e, floorData) {
-    const posX = e.clientX;
-    const posY = e.clientY;
+  floorDetails(e, floorData, width, height) {
+    const curAreaCoords = e.target.coords.split(',');
+    let xMax = 0;
+    let yMax = 0;
+    
+    for (let i = 0; i < Math.trunc(curAreaCoords.length / 2); i++) {
+      if (+curAreaCoords[2 * i] > xMax) {
+        xMax = +curAreaCoords[2 * i];
+      }
+
+      if (+curAreaCoords[2 * i + 1] > yMax) {
+        yMax = +curAreaCoords[2 * i + 1];
+      }
+    };
+
+    const posX = xMax;
+    const posY = yMax;
 
     $('.floor_data').text(
       'Floor: ' +
@@ -57,18 +78,17 @@ export class PrFacadeComponent implements OnInit {
 
     $('.floor_popup')
       .attr('style', 'left:' + posX + 'px;top:' + posY + 'px;')
-      .show();
+      .fadeIn(200);
   }
 
   floorDetailsHide() {
-    $('.floor_popup').hide();
+    $('.floor_popup').attr('style', 'display:none');
     $('.floor_data').empty();
   }
 
   openModal(e, width, height) {
     const posX = e.clientX;
     const posY = e.clientY;
-    console.log(width, height);
 
     $('.floor_modal_image').attr('src', '../../../../assets/img/1_floor.png');
     $('.floor_modal_image')
