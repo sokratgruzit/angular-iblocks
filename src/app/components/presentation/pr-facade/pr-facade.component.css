@@ -19,7 +19,19 @@
     background: rgb(255, 255, 255);
 }
 
-.floor_modal_image {
+#floor_modal_image {
+    box-sizing: border-box;
+    position: absolute;
+}
+
+#flat_modal {
+    box-sizing: border-box;
+    background: rgb(255, 255, 255);
+    position: fixed;
+    z-index: 100000;
+}
+
+#flat_modal_image {
     box-sizing: border-box;
     position: absolute;
 }
@@ -76,7 +88,7 @@
     display: block;
 }
 
-@-webkit-keyframes zoomInFloor {
+@-webkit-keyframes zoomInObject {
     from {
         opacity: 0;
         width: 0px;
@@ -97,7 +109,7 @@
     }
 }
 
-@keyframes zoomInFloor {
+@keyframes zoomInObject {
     from {
         opacity: 0;
         width: 0px;
@@ -118,15 +130,15 @@
     }
 }
 
-.zoom_in_floor {
-    -webkit-animation-name: zoomInFloor;
-    animation-name: zoomInFloor;
+.zoom_in_object {
+    -webkit-animation-name: zoomInObject;
+    animation-name: zoomInObject;
     animation-duration: .5s;
     animation-fill-mode: forwards;
     background: rgb(255, 255, 255);
 }
 
-@-webkit-keyframes zoomOutFloor {
+@-webkit-keyframes zoomOutObject {
     from {
         -webkit-transform: scale3d(1, 1, 1);
         transform: scale3d(1, 1, 1);
@@ -147,7 +159,7 @@
     }
 }
 
-@keyframes zoomOutFloor {
+@keyframes zoomOutObject {
     from {
         -webkit-transform: scale3d(1, 1, 1);
         transform: scale3d(1, 1, 1);
@@ -168,9 +180,9 @@
     }
 }
 
-.zoom_out_floor {
-    -webkit-animation-name: zoomOutFloor;
-    animation-name: zoomOutFloor;
+.zoom_out_object {
+    -webkit-animation-name: zoomOutObject;
+    animation-name: zoomOutObject;
     animation-duration: .5s;
     animation-fill-mode: forwards;
 }

@@ -1,0 +1,33 @@
+#aside_menu {
+    box-sizing: border-box;
+    position: fixed;
+    right: -250px;
+    width: 250px;
+    top: 0;
+    bottom: 0;
+    background: rgb(255, 255, 255);
+    z-index: 100000;
+}
+
+.return_to_view {
+    box-sizing: border-box;
+    position: absolute;
+    color: rgb(255, 255, 255);
+    width: 40px;
+    left: -40px;
+    top: calc(50% - 8px);
+    z-index: 100000;
+    cursor: pointer;
+}
+
+.return_to_view::after {
+    box-sizing: border-box;
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 2px;
+    background: rgb(255, 255, 255);
+    left: -50px;
+    top: 8px;
+    cursor: pointer;
+}
