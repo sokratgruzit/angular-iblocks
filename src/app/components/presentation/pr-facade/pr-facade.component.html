@@ -19,14 +19,14 @@
 <div class="floor_popup">
   <span class="floor_data"></span>
 </div>
-<div id="floor_modal" class="zoom_out_object">
+<div id="floor_modal">
   <div class="floor_modal_close" (click)="closeModal($event)"></div>
   <img id="floor_modal_image" alt="1 floor" usemap="#floor">
   <map name="floor">
     <area *ngFor="let flat of flatsCoordsList" (click)="openFlatModal(flat[0], 'flat')" [attr.target]="" [attr.alt]=flat[1] [attr.title]=flat[1] href="#" [attr.coords]=flat[4] shape="poly">
   </map>
 </div>
-<div id="flat_modal" class="zoom_out_object">
+<div id="flat_modal">
   <img id="flat_modal_image">
 </div>
 <div class="background_layer"></div>

@@ -9,8 +9,8 @@ declare var $: any;
 export class AsideMenuComponent implements OnInit {
 
   returnToView() {
-    $('#floor_modal').removeClass('zoom_in_object').addClass('zoom_out_object');
-    $('#flat_modal').removeClass('zoom_in_object').addClass('zoom_out_object');
+    $('#floor_modal').effect('size', { to: { width: 0, height: 0 } }, 300);
+    $('#flat_modal').effect('size', { to: { width: 0, height: 0 } }, 300);
     $('#flat_modal_image').attr('style', 'display:none');
     $('.return_to_view').fadeOut(200);
     $('.background_layer').fadeOut(350);

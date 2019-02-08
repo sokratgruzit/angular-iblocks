@@ -90,17 +90,25 @@ export class PrFacadeComponent implements OnInit {
     const posY = e.clientY;
 
     $('#floor_modal_image').attr('src', '../../../../assets/img/1_floor.png')
-    .attr('style', 'width:' + width + 'px;height:' + height + 'px;');
-    $('#floor_modal').attr('style', 'width:' + width + 'px;height:' + height + 'px;left:calc(50% - ' + width / 2 + 'px);')
-    .removeClass('zoom_out_object').addClass('zoom_in_object');
+    .attr('style', 'width:' + width + 'px;height:' + height + 'px;display:block');
+
+    $('#floor_modal').attr('style', 'top:10%;left:calc(50% - ' + width / 2 + 'px);')
+    .effect('size', { to: { width: width, height: height } }, 300,
+      function() {
+        $(this).show();
+      }
+    );
     $('.return_to_view').fadeIn(200);
     $('.floor_modal_close').attr('style', 'display:block');
     $('.background_layer').fadeIn(350);
   }
 
   closeModal(e) {
-    $('#floor_modal').effect('bounce', 'slow');
-    // .removeClass('zoom_in_object').addClass('zoom_out_object');
+    $('#floor_modal').effect('size', { to: { width: 0, height: 0 } }, 300,
+      function() {
+        $(this).hide();
+      }
+    );
     $('.floor_modal_close').attr('style', '');
     $('.return_to_view').fadeOut(200);
     $('.background_layer').fadeOut(350);
@@ -115,12 +123,10 @@ export class PrFacadeComponent implements OnInit {
       return obj.id === id;
     });
 
-    $('#floor_modal').removeClass('zoom_in_object').addClass('zoom_out_object');
-    $('#flat_modal').removeClass('zoom_out_object').addClass('zoom_in_object')
+    $('#floor_modal').effect('size', { to: { width: 0, height: 0 } }, 300);
+    $('#flat_modal').effect('size', { to: { width: curFlat[0].imageWidth, height: curFlat[0].imageHeight } }, 300)
     .attr('style',
       'top:10%;' +
-      'width:' + curFlat[0].imageWidth + 'px;' +
-      'height:' + curFlat[0].imageHeight + 'px;' +
       'left:calc(50% - ' + curFlat[0].imageWidth / 2 + 'px);'
     );
 
@@ -182,7 +188,7 @@ export class PrFacadeComponent implements OnInit {
   }
 
   closeFlatModal() {
-    $('#flat_modal').removeClass('zoom_in_object').addClass('zoom_out_object');
+    $('#flat_modal').effect('size', { to: { width: 0, height: 0 } }, 300);
     $('.background_layer').fadeOut(350);
 
     this.closeAsideMenu();

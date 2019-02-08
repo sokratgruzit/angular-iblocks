@@ -17,11 +17,14 @@
 #floor_modal {
     box-sizing: border-box;
     background: rgb(255, 255, 255);
+    position: fixed;
+    z-index: 100000;
 }
 
 #floor_modal_image {
     box-sizing: border-box;
     position: absolute;
+    display: none;
 }
 
 #flat_modal {
@@ -86,103 +89,4 @@
     padding: 10px;
     text-align: center;
     display: block;
-}
-
-@-webkit-keyframes zoomInObject {
-    from {
-        opacity: 0;
-        width: 0px;
-        height: 0px;
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-    to {
-        -webkit-transform: scale3d(1, 1, 1);
-        transform: scale3d(1, 1, 1);
-        opacity: 1;
-        z-index: 10000;
-        position: fixed;
-        top: 5%;
-    }
-}
-
-@keyframes zoomInObject {
-    from {
-        opacity: 0;
-        width: 0px;
-        height: 0px;
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-    to {
-        -webkit-transform: scale3d(1, 1, 1);
-        transform: scale3d(1, 1, 1);
-        opacity: 1;
-        z-index: 10000;
-        position: fixed;
-        top: 5%;
-    }
-}
-
-.zoom_in_object {
-    -webkit-animation-name: zoomInObject;
-    animation-name: zoomInObject;
-    animation-duration: .5s;
-    animation-fill-mode: forwards;
-    background: rgb(255, 255, 255);
-}
-
-@-webkit-keyframes zoomOutObject {
-    from {
-        -webkit-transform: scale3d(1, 1, 1);
-        transform: scale3d(1, 1, 1);
-        opacity: 1;
-        z-index: 10000;
-        position: fixed;
-        top: 5%;
-    }
-
-    50% {
-        opacity: .7;
-    }
-
-    to {
-        opacity: 0;
-        width: 0px;
-        height: 0px;
-    }
-}
-
-@keyframes zoomOutObject {
-    from {
-        -webkit-transform: scale3d(1, 1, 1);
-        transform: scale3d(1, 1, 1);
-        opacity: 1;
-        z-index: 10000;
-        position: fixed;
-        top: 5%;
-    }
-
-    50% {
-        opacity: .7;
-    }
-
-    to {
-        opacity: 0;
-        width: 0px;
-        height: 0px;
-    }
-}
-
-.zoom_out_object {
-    -webkit-animation-name: zoomOutObject;
-    animation-name: zoomOutObject;
-    animation-duration: .5s;
-    animation-fill-mode: forwards;
 }
