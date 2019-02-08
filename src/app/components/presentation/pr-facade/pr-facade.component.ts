@@ -51,23 +51,9 @@ export class PrFacadeComponent implements OnInit {
     this.getFlatsList();
   }
 
-  floorDetails(e, floorData, width, height) {
-    const curAreaCoords = e.target.coords.split(',');
-    let xMax = 0;
-    let yMax = 0;
-
-    for (let i = 0; i < Math.trunc(curAreaCoords.length / 2); i++) {
-      if (+curAreaCoords[2 * i] > xMax) {
-        xMax = +curAreaCoords[2 * i];
-      }
-
-      if (+curAreaCoords[2 * i + 1] > yMax) {
-        yMax = +curAreaCoords[2 * i + 1];
-      }
-    }
-
-    const posX = xMax;
-    const posY = yMax;
+  floorDetails(e, floorData) {
+    const posX = e.clientX;
+    const posY = e.clientY;
 
     $('.floor_data').text(
       'Floor: ' + floorData.id + '; ' +
@@ -75,7 +61,13 @@ export class PrFacadeComponent implements OnInit {
       'Status: ' + floorData.properties.flats[0][3] + ';'
     );
 
-    $('.floor_popup').attr('style', 'left:' + posX + 'px;top:' + posY + 'px;').fadeIn(200);
+    const popupWidth = $('.floor_popup').width();
+    const popupHeight = $('.floor_popup').height();
+
+    $('.floor_popup').attr('style',
+      'left:' + (e.clientX - popupWidth / 2) + 'px;' +
+      'top:' + (e.clientY - popupHeight - 10) + 'px;'
+    ).fadeIn(200);
   }
 
   floorDetailsHide() {

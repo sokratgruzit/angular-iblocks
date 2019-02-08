@@ -2,15 +2,14 @@
 <app-aside-menu></app-aside-menu>
 
 <img class="map" src="../../../../assets/img/facade.jpg" usemap="#facade" (window:resize)="resizeReloader()">
-<map name="facade">
+<map id="map_area" name="facade">
   <area *ngFor="let floor of floorsList" 
     (click)="openModal($event, floor.properties.imageWidth, floor.properties.imageHeight); openAsideMenu(floor.id, 'floor')" 
+    (mousemove)="floorDetails($event, floor)"
     (mouseleave)="floorDetailsHide()" 
-    (mouseenter)="floorDetails($event, floor, floor.properties.imageWidth, floor.properties.imageHeight)"
     [attr.id]="floor.id" 
     [attr.target]="" 
-    [attr.alt]="floor.properties.name" 
-    [attr.title]="floor.properties.name"
+    [attr.alt]="floor.properties.name"
     [attr.href]="" 
     [attr.shape]="floor.geometry.type" 
     [attr.coords]="floor.geometry.coordinates"
