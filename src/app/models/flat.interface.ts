@@ -1,0 +1,32 @@
+export interface FlatModel {
+    id: string;
+    complexId: string;
+    buildingId: string;
+    apartmentNumber: string;
+    floor: string;
+    totalArea: string;
+    price: string;
+    currency: string;
+    numberOfRooms: string;
+    status: string;
+    buildingName: string;
+    house: string;
+    entrance: string;
+    costPerSqMeter: string;
+    studio: boolean;
+    freeLayout: boolean;
+    planningCode: string;
+    livingSpace: string;
+    kitchenArea: string;
+    viewType: string;
+    numberOfBalconies: string;
+    numberOfBedrooms: string;
+    numberOfCombinedBathrooms: string;
+    numberOfSeparateBathrooms: string;
+    imageWidth: string;
+    imageHeight: string;
+    layoutImgUrl: string;
+    createdAt: string;
+    updatedAt: string;
+    createdBy: string;
+}

@@ -11,12 +11,14 @@ import { PrFloorsComponent } from './components/presentation/pr-floors/pr-floors
 import { PrFloorViewComponent } from './components/presentation/pr-floor-view/pr-floor-view.component';
 import { PrPlanningsComponent } from './components/presentation/pr-plannings/pr-plannings.component';
 import { TopMenuComponent } from './components/presentation/top-menu/top-menu.component';
+import { AsideMenuComponent } from './components/presentation/aside-menu/aside-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PrFacadeComponent,
-    TopMenuComponent
+    TopMenuComponent,
+    AsideMenuComponent
   ],
   imports: [
     BrowserModule,

@@ -26,7 +26,7 @@
     <area *ngFor="let flat of flatsCoordsList" (click)="openFlatModal(flat[0], 'flat')" [attr.target]="" [attr.alt]=flat[1] [attr.title]=flat[1] href="#" [attr.coords]=flat[4] shape="poly">
   </map>
 </div>
-<div id="flat_modal">
+<div id="flat_modal" class="zoom_out_object">
   <img id="flat_modal_image">
 </div>
 <div class="background_layer"></div>

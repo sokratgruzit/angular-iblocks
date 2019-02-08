@@ -18,6 +18,7 @@
     top: calc(50% - 8px);
     z-index: 100000;
     cursor: pointer;
+    display: none;
 }
 
 .return_to_view::after {
