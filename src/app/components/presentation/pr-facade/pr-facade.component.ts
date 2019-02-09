@@ -52,8 +52,13 @@ export class PrFacadeComponent implements OnInit {
   }
 
   floorDetails(e, floorData) {
-    const posX = e.clientX;
-    const posY = e.clientY;
+    const popupWidth = $('.floor_popup').width();
+    const popupHeight = $('.floor_popup').height();
+    let scrollY = $(window).scrollTop();
+
+    if (scrollY === undefined) {
+      scrollY = 0;
+    }
 
     $('.floor_data').text(
       'Floor: ' + floorData.id + '; ' +
@@ -61,12 +66,9 @@ export class PrFacadeComponent implements OnInit {
       'Status: ' + floorData.properties.flats[0][3] + ';'
     );
 
-    const popupWidth = $('.floor_popup').width();
-    const popupHeight = $('.floor_popup').height();
-
     $('.floor_popup').attr('style',
       'left:' + (e.clientX - popupWidth / 2) + 'px;' +
-      'top:' + (e.clientY - popupHeight - 10) + 'px;'
+      'top:' + (e.clientY - popupHeight + scrollY - 10) + 'px;'
     ).fadeIn(200);
   }
 
