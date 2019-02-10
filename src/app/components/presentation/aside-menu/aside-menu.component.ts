@@ -9,13 +9,13 @@ declare var $: any;
 export class AsideMenuComponent implements OnInit {
 
   returnToView() {
-    $('#floor_modal').effect('size', { to: { width: 0, height: 0 } }, 300);
-    $('#flat_modal').effect('size', { to: { width: 0, height: 0 } }, 300);
-    $('#flat_modal_image').attr('style', 'display:none');
-    $('.return_to_view').fadeOut(200);
-    $('.background_layer').fadeOut(350);
+    // $('#floor_modal').effect('size', { to: { width: 0, height: 0 } }, 300);
+    // $('#flat_modal').effect('size', { to: { width: 0, height: 0 } }, 300);
+    // $('#flat_modal_image').attr('style', 'display:none');
+    // $('.return_to_view').fadeOut(200);
+    // $('.background_layer').fadeOut(350);
 
-    this.closeAsideMenu();
+    // this.closeAsideMenu();
   }
 
   closeAsideMenu() {

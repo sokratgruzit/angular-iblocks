@@ -3,6 +3,7 @@ import { LayoutFloorService } from '../../../services/layout-floor.service';
 import { FlatsListService } from '../../../services/flats-list.service';
 import { AsideMenuComponent } from '../aside-menu/aside-menu.component';
 import { HttpClient } from '@angular/common/http';
+import { Properties } from '../../../models/floor.interface';
 declare var $: any;
 
 @Component({
@@ -12,7 +13,6 @@ declare var $: any;
 })
 export class PrFacadeComponent implements OnInit {
   floorsList = [];
-  flatsCoordsList = [];
   flatsList = [];
 
   constructor(public layoutFloorService: LayoutFloorService, public flatsListService: FlatsListService) { }
@@ -21,13 +21,6 @@ export class PrFacadeComponent implements OnInit {
     this.layoutFloorService.getAllFloorsData()
     .subscribe((data) => {
       this.floorsList = data;
-    });
-  }
-
-  getFlatsCoords(buildingId, floorId) {
-    this.layoutFloorService.getAllFloorsData()
-    .subscribe((data) => {
-      this.flatsCoordsList = data[0].properties.flats;
     });
   }
 
@@ -40,14 +33,12 @@ export class PrFacadeComponent implements OnInit {
 
   ngOnInit() {
     $(function () {
-      $('#floor_modal_image').maphilight();
       $('.map').maphilight();
       $('img[usemap]').rwdImageMaps();
       // $('img[usemap]').mapify();
     });
 
     this.getFloors();
-    this.getFlatsCoords(1, 1);
     this.getFlatsList();
   }
 
@@ -80,34 +71,29 @@ export class PrFacadeComponent implements OnInit {
   openModal(e, width, height, floorId) {
     this.hideTopMenu();
 
+    const curFloor = this.floorsList.filter(obj => {
+      return obj.id === floorId;
+    });
+
     const posX = e.clientX;
     const posY = e.clientY;
+    const img = document.createElement('img');
 
-    $('#floor_modal_image').attr('src', '../../../../assets/img/1_floor.png')
-    .attr('style', 'width:' + width + 'px;height:' + height + 'px;display:block');
+    img.setAttribute('id', 'floor_modal_image');
+    img.setAttribute('usemap', '#floor');
+
+    $('#floor_modal').append(img);
 
     $('#floor_modal').attr('style', 'top:10%;left:calc(50% - ' + width / 2 + 'px);')
     .effect('size', { to: { width: width, height: height } }, 300,
       function() {
-        $(this).show();
+        $('#floor_modal_image').attr('src', curFloor[0].properties.layoutImgUrl)
+        .attr('style', 'width:' + width + 'px;height:' + height + 'px;display:block').maphilight();
       }
     );
     $('.return_to_view').fadeIn(200);
     $('.floor_modal_close').attr('style', 'display:block');
     $('.background_layer').fadeIn(350);
-  }
-
-  closeModal(e) {
-    $('#floor_modal').effect('size', { to: { width: 0, height: 0 } }, 300,
-      function() {
-        $(this).hide();
-      }
-    );
-    $('.floor_modal_close').attr('style', '');
-    $('.return_to_view').fadeOut(200);
-    $('.background_layer').fadeOut(350);
-
-    this.closeAsideMenu();
   }
 
   openFlatModal(id, type) {
@@ -135,15 +121,19 @@ export class PrFacadeComponent implements OnInit {
 
   openAsideMenu(id, type) {
     if (type === 'floor') {
+      const curFloor = this.floorsList.filter(obj => {
+        return obj.id === id;
+      });
+
       $('#aside_menu').delay(400).animate({ right: 0 }, 600);
 
-      for (let i = 0; i < this.flatsList.length; i++) {
-        const curFloor = this.flatsList[i];
+      for (let i = 0; i < curFloor[0].properties.flats.length; i++) {
+        const flats = curFloor[0].properties.flats;
         const div = document.createElement('div');
         const text = document.createTextNode(
-          'Apartament numger: ' + curFloor.apartmentNumber + '; ' +
-          'Floor number: ' + curFloor.floor + '; ' +
-          'Price: ' + curFloor.price + curFloor.currency + ';'
+          'Apartament number: ' + flats[0][1] + '; ' +
+          'Floor number: ' + curFloor[0].properties.name + '; ' +
+          'Price: ' + curFloor[0].properties.price + ' Rub;'
         );
 
         div.appendChild(text);
@@ -172,20 +162,6 @@ export class PrFacadeComponent implements OnInit {
       $('.aside_menu_content').append(div);
 
     }
-  }
-
-  closeAsideMenu() {
-    $('#aside_menu').animate({ right: '-250px' }, 350);
-
-    $('.flats_list').remove();
-    $('.flat_data').remove();
-  }
-
-  closeFlatModal() {
-    $('#flat_modal').effect('size', { to: { width: 0, height: 0 } }, 300);
-    $('.background_layer').fadeOut(350);
-
-    this.closeAsideMenu();
   }
 
   hideTopMenu() {

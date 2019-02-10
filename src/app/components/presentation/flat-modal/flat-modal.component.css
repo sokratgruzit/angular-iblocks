@@ -1,0 +1,11 @@
+#flat_modal {
+    box-sizing: border-box;
+    background: rgb(255, 255, 255);
+    position: fixed;
+    z-index: 100000;
+}
+
+#flat_modal_image {
+    box-sizing: border-box;
+    position: absolute;
+}

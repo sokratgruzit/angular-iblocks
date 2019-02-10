@@ -1,0 +1,43 @@
+#floor_modal {
+    box-sizing: border-box;
+    background: rgb(255, 255, 255);
+    position: fixed;
+    z-index: 100000;
+}
+
+#floor_modal_image {
+    box-sizing: border-box;
+    position: absolute;
+    display: none;
+}
+
+.floor_modal_close {
+    box-sizing: border-box;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    z-index: 10000;
+    display: none;
+}
+
+.floor_modal_close::before,
+.floor_modal_close::after {
+    box-sizing: border-box;
+    position: absolute;
+    content: '';
+    width: 30px;
+    height: 2px;
+    background: rgb(0, 0, 0);
+    top: 15px;
+}
+
+.floor_modal_close::before {
+    transform: rotate(45deg);
+}
+
+.floor_modal_close::after {
+    transform: rotate(-45deg);
+}
