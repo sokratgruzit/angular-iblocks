@@ -96,29 +96,6 @@ export class PrFacadeComponent implements OnInit {
     $('.background_layer').fadeIn(350);
   }
 
-  openFlatModal(id, type) {
-    this.hideTopMenu();
-
-    const curFlat = this.flatsList.filter(obj => {
-      return obj.id === id;
-    });
-
-    $('#floor_modal').effect('size', { to: { width: 0, height: 0 } }, 300);
-    $('#flat_modal').effect('size', { to: { width: curFlat[0].imageWidth, height: curFlat[0].imageHeight } }, 300)
-    .attr('style',
-      'top:10%;' +
-      'left:calc(50% - ' + curFlat[0].imageWidth / 2 + 'px);'
-    );
-
-    $('#flat_modal_image').attr('src', curFlat[0].layoutImgUrl)
-    .attr('style',
-      'width:' + curFlat[0].imageWidth + 'px;' +
-      'height:' + curFlat[0].imageHeight + 'px;'
-    );
-
-    this.openAsideMenu(id, type);
-  }
-
   openAsideMenu(id, type) {
     if (type === 'floor') {
       const curFloor = this.floorsList.filter(obj => {
@@ -131,7 +108,7 @@ export class PrFacadeComponent implements OnInit {
         const flats = curFloor[0].properties.flats;
         const div = document.createElement('div');
         const text = document.createTextNode(
-          'Apartament number: ' + flats[0][1] + '; ' +
+          'Apartament number: ' + flats[i][1] + '; ' +
           'Floor number: ' + curFloor[0].properties.name + '; ' +
           'Price: ' + curFloor[0].properties.price + ' Rub;'
         );

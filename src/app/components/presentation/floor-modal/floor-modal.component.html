@@ -1,8 +1,8 @@
-<app-flat-modal></app-flat-modal>
+<app-flat-modal #openFlatModal></app-flat-modal>
 
 <div id="floor_modal">
   <div class="floor_modal_close" (click)="closeModal($event)"></div>
 </div>
 <map name="floor">
-  <area *ngFor="let flat of flatsCoordsList" (click)="openFlatModal(flat[0], 'flat')" [attr.target]="" [attr.alt]=flat[1] [attr.title]=flat[1] href="#" [attr.coords]=flat[4] shape="poly">
+  <area *ngFor="let flat of flatsCoordsList" (click)="openFlatModal.openFlatModal(flat[0], 'flat')" [attr.target]="" [attr.alt]=flat[1] [attr.title]=flat[1] href="#" [attr.coords]=flat[4] shape="poly">
 </map>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LayoutFloorService } from '../../../services/layout-floor.service';
 import { HttpClient } from '@angular/common/http';
+import { FlatModalComponent } from '../flat-modal/flat-modal.component';
 declare var $: any;
 
 @Component({
